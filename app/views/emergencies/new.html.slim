@@ -1,0 +1,10 @@
+h1
+  | New Emergency
+
+= simple_form_for(@emergency) do |f|
+  = f.error_notification
+
+  = f.input :title
+  = f.input :description, :input_html => {:style=> 'height: 200px'}
+
+  = f.button :submit
