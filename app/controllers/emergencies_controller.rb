@@ -1,5 +1,7 @@
 class EmergenciesController < ApplicationController
 
+	before_filter :find_emergency, only: [:edit, :update, :show, :destroy]
+
 	def new
 		@emergency = Emergency.new
 	end
@@ -18,11 +20,9 @@ class EmergenciesController < ApplicationController
 	end
 
 	def edit
-		@emergency = Emergency.find(params[:id])
 	end
 
 	def update
-		@emergency = Emergency.find(params[:id])
 		if @emergency.update(page_params)
 			redirect_to emergencies_path
 		else
@@ -31,11 +31,9 @@ class EmergenciesController < ApplicationController
 	end
 
 	def show
-		@emergency = Emergency.find(params[:id])
 	end
 
 	def destroy
-		@emergency = Emergency.find(params[:id])
 		if @emergency.destroy
 			redirect_to emergencies_path
 		else
@@ -46,6 +44,10 @@ class EmergenciesController < ApplicationController
 	private
 		def page_params
 			params[:emergency].permit(:title, :description)
+		end
+
+		def find_emergency
+			@emergency = Emergency.find(params[:id])
 		end
 
 end

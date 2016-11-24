@@ -10,7 +10,7 @@
 
 
 h1
-  | Pages
+  |All emergencies
 table.table
   thead
     tr
@@ -25,4 +25,4 @@ table.table
           = link_to "Edit", edit_emergency_path(emergency)
         td
           = link_to "Destroy", emergency_path(emergency), method: :delete, data:{confirm: 'Are you sure?'}
-= link_to "New Page", new_emergency_path
+= link_to "Create new emergency", new_emergency_path
