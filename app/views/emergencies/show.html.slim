@@ -1,7 +1,9 @@
 h1
-	= @emergency.title
+  = @emergency.title
 
 h4
-	= @emergency.description
+  = @emergency.description
 
-= link_to "All Emergencies", emergencies_path
+div.emergency-nav
+  = link_to "Create new message", new_message_path(@emergency)
+  = link_to "All Emergencirs", emergencies_path
