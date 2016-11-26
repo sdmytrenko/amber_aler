@@ -40,14 +40,14 @@ class EmergenciesController < ApplicationController
 		if @emergency.destroy
 			redirect_to emergencies_path
 		else
-			redirect_to emergencies_path, errors: 'Something goes wrong'
+			redirect_to emergencies_path, flash: {errors: 'Something goes wrong'}
 		end
 	end
 
 	private
 		def only_author!
 			unless @emergency.user == current_user
-				redirect_to emergencies_path, errors: 'Only author can update emergency'
+				redirect_to emergencies_path, flash: {errors: 'Only author can update emergency'}
 			end
 		end
 
