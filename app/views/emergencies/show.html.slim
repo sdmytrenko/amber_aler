@@ -4,6 +4,10 @@ h1
 h4
   = @emergency.description
 
+= simple_form_for(Message.new) do |f|
+  = f.input :text
+  = f.button :submit
+
 div.emergency-nav
   = link_to "Create new message", new_message_path(@emergency)
   = link_to "All Emergencirs", emergencies_path
