@@ -33,7 +33,4 @@ h3
       i
         = link_to comment.user.name
 
-
-= simple_form_for(Message.new) do |f|
-  = f.input :text, label: false, :input_html => {:style=> 'width: 400px', :rows => 4}
-  = f.button :submit
+= render :partial => 'messages/message_create_form'
