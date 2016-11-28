@@ -30,6 +30,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :emergencies
+  has_many :messages
 
 
 end
