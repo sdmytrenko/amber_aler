@@ -1,13 +1,14 @@
 class MessagesController < ApplicationController
 
-  # before_action :find_message, only: [:edit, :update, :destroy]
+  before_action :find_emergency, only: [:edit, :update, :destroy]
+  before_action :find_message, only: [:edit, :update, :destroy]
   # before_action :only_author!, only: [:edit, :update, :destroy]
 
   def new
     @message = Message.new
   end
 
-  def create #http://v32.rusrails.ru/getting-started-with-rails/adding-a-second-model
+  def create
     @emergency  = Emergency.find(params[:id])
     @message = @emergency.messages.new(messages_params)
     @message.user = current_user
@@ -19,24 +20,22 @@ class MessagesController < ApplicationController
   end
 
   def edit
-    # if message.update(message_params)
-    #   redirect_to emergency_path(@emergency)
-    # else
-    #   render :edit
-    # end
   end
 
   def update
-    # if @message.update
-    #   redirect to message_path
-    # else
-    #   render :new
-    # end
+    if @message.update
+      redirect to emergency_path(@emergency), flash: {notice: 'Post successfuly updated'}
+    else
+      render :new
+    end
   end
 
   def destroy
-    # if @message.destroy
-    #   redirect_to emergencies_path
+    if @message.destroy
+      redirect_to emergencies_path
+    else
+      redirect_to emergencies_path, flash: {errors: 'Message not deleted'}
+    end
   end
 
   private
@@ -51,6 +50,10 @@ class MessagesController < ApplicationController
     #     end
     #   end
     # end
+
+    def find_emergency
+      @emergency = @message.emergency
+    end
 
     def find_message
         @message = Message.find(params[:id])

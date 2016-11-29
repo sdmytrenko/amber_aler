@@ -10,7 +10,7 @@ class EmergenciesController < ApplicationController
 
   def create
     @emergency = Emergency.new(page_params)
-    @emergency.user = current.user # додавання id поточного юзера
+    @emergency.user = current_user # додавання id поточного юзера
     if @emergency.save
       redirect_to emergencies_path
     else
@@ -27,7 +27,7 @@ class EmergenciesController < ApplicationController
 
   def update
     if @emergency.update(page_params)
-      redirect_to emergencies_path
+      redirect_to emergencies_path, flash: {notice: 'Post successfuly updated'}
     else
       render :edit
     end
