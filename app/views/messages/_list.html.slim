@@ -8,6 +8,7 @@
       h4.media-heading
         /title can go here
         small
+          => message.user.display_name
           => message.created_at
           - if message.user == current_user
             => link_to 'Edit', edit_message_path(emergency, message)
