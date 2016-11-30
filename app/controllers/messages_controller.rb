@@ -1,21 +1,16 @@
 class MessagesController < ApplicationController
 
-  before_action :find_emergency, only: [:edit, :update, :destroy]
   before_action :find_message, only: [:edit, :update, :destroy]
-  # before_action :only_author!, only: [:edit, :update, :destroy]
-
-  def new
-    @message = Message.new
-  end
 
   def create
-    @emergency  = Emergency.find(params[:id])
-    @message = @emergency.messages.new(messages_params)
+    @message = Message.new(messages_params)
+    @message.emergency_id = params[:emergency_id]
     @message.user = current_user
+
     if @message.save
-      redirect_to emergency_path(@emergency)
+      redirect_to emergency_path(@message.emergency_id)
     else
-      render :new
+      render "emergency/show"
     end
   end
 
@@ -23,40 +18,28 @@ class MessagesController < ApplicationController
   end
 
   def update
-    if @message.update
-      redirect to emergency_path(@emergency), flash: {notice: 'Post successfuly updated'}
+    if @message.update(messages_params)
+      redirect_to emergency_path(@message.emergency_id), flash: {notice: 'Post successfuly updated'}
     else
-      render :new
+      render :edit
     end
   end
 
   def destroy
     if @message.destroy
-      redirect_to emergencies_path
+      redirect_to emergency_path(@message.emergency_id)
     else
-      redirect_to emergencies_path, flash: {errors: 'Message not deleted'}
+      redirect_to emergency_path(@message.emergency_id), flash: {error: 'Message not deleted'}
     end
   end
 
   private
 
     def messages_params
-      params[:message].permit(:text)
-    end
-
-    # def only_author!
-    #   unless @message.user == current_user
-    #       redirect_to message_path, flash: {errors: 'Only author can update message!'}
-    #     end
-    #   end
-    # end
-
-    def find_emergency
-      @emergency = @message.emergency
+      params[:message].permit(:text, :claim_closed)
     end
 
     def find_message
         @message = Message.find(params[:id])
     end
-
 end
