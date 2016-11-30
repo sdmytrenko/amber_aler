@@ -12,10 +12,10 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!
-  	if user_signed_in?
-  		super
-  	else
-  		redirect_to new_user_session_path, :notice => 'please sign in'
-  	end
+    if user_signed_in?
+      super
+    else
+      redirect_to new_user_session_path, :notice => 'please sign in'
+    end
   end
 end

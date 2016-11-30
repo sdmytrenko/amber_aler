@@ -4,10 +4,43 @@ h1
 h4
   = @emergency.description
 
-= simple_form_for(Message.new) do |f|
-  = f.input :text
-  = f.button :submit
+p
+= link_to "All Emergencies", emergencies_path
+|  | 
+= link_to "Create new message", new_message_path(@emergency)
+- if @emergency.user == current_user
+  |  | 
+  = link_to "Edit post", edit_emergency_path(@emergency)
+-if @emergency.user == current_user
+  |  | 
+  = link_to "Delete post", emergency_path(@emergency), method: :delete, data:{confirm: 'Are you   sure?'}
 
-div.emergency-nav
-  = link_to "Create new message", new_message_path(@emergency)
-  = link_to "All Emergencirs", emergencies_path
+
+h3 
+  = 'Comments: '
+  = @emergency.messages.size
+
+
+- @emergency.messages.each do |comment|
+  p
+    h4
+      b
+        = link_to comment.user.name
+  p
+    = comment.text
+  p
+    h6
+      u
+        | Posted 
+        = time_ago_in_words comment.created_at
+        |  ago
+
+      - if comment.user == current_user
+        |  | 
+        = link_to "Edit", edit_message_path(@emergency), method: :edit
+
+      - if comment.user == current_user
+        |  | 
+        = link_to "Delete", message_path(@emergency), method: :delete, data:{confirm: 'Are you   sure?'}
+
+= render :partial => 'messages/message_create_form'

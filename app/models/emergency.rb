@@ -11,6 +11,7 @@
 #
 
 class Emergency < ApplicationRecord
-	belongs_to :user # створюємо зв’язки один до багатьох
-	validates :title, :description, presence: true
+  belongs_to :user # створюємо зв’язки один до багатьох
+  has_many :messages
+  validates :title, :description, presence: true
 end
