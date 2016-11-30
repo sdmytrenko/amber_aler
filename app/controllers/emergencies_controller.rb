@@ -27,7 +27,7 @@ class EmergenciesController < ApplicationController
 
   def update
     if @emergency.update(page_params)
-      redirect_to emergencies_path, flash: {notice: 'Post successfuly updated'}
+      redirect_to emergency_path, flash: {notice: 'Post successfuly updated'}
     else
       render :edit
     end

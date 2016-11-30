@@ -1,0 +1,7 @@
+= simple_form_for(@message) do |f|
+  = f.input :text
+  - if @message.emergency && @message.emergency.user == current_user
+    = f.input :claim_closed, as: :boolean
+  = f.button :submit
+
+    / = f.input :text, label: false, :input_html => {:style=> 'width: 400px', :rows => 4}

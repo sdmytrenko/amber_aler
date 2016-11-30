@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :emergencies do
     member do
-      resources :messages, except: [:index, :show]
+      resources :messages, except: [:index, :new, :show]
     end
   end
 end
