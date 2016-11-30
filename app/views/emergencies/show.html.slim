@@ -4,7 +4,13 @@ h1
 h4
   = @emergency.description
 
-= render 'messages/list', emergency: @emergency
-
 div.emergency-nav
   = link_to "All Emergencirs", emergencies_path
+  - if @emergency.user == current_user    
+    |  |    
+    = link_to "Edit post", edit_emergency_path(@emergency)    
+  - if @emergency.user == current_user   
+    |  |    
+    = link_to "Delete post", emergency_path(@emergency), method: :delete, data:{confirm: 'Are you   sure?'}
+
+= render 'messages/list', emergency: @emergency
