@@ -1,8 +1,8 @@
 h1
   = @emergency.title
 
-h4
-  = @emergency.description
+div.fr-view
+  = sanitize @emergency.description, tags: %w(p strong em u table thead tbody th tr td h4 h5 h6 pre br hr ul ol li blockquote), attributes: %w(id class style)
 
 div.emergency-nav
   = link_to "All Emergencirs", emergencies_path
