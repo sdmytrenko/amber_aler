@@ -1,16 +1,25 @@
-h1
-  = @emergency.title
+.row
+  div.col-md-8
+    div.fr-view
+      h1 = @emergency.title
+      p.lead = "by #{@emergency.user.display_name}"
+      hr
+      p
+        span.glyphicon.glyphicon-time
+        = "Posted on #{@emergency.created_at}"
+      hr
+      = sanitize @emergency.description, tags: %w(p strong em u table thead tbody th tr td h4 h5 h6 pre br hr ul ol li blockquote), attributes: %w(id class style)
 
-h4
-  = @emergency.description
+    = render 'messages/list', emergency: @emergency
 
-div.emergency-nav
-  = link_to "All Emergencirs", emergencies_path
-  - if @emergency.user == current_user    
-    |  |    
-    = link_to "Edit post", edit_emergency_path(@emergency)    
-  - if @emergency.user == current_user   
-    |  |    
-    = link_to "Delete post", emergency_path(@emergency), method: :delete, data:{confirm: 'Are you   sure?'}
-
-= render 'messages/list', emergency: @emergency
+  div.col-md-4
+    div.well
+      h4
+        | Navigation
+      = link_to "All Emergencirs", emergencies_path
+      p
+      - if @emergency.user == current_user    
+        = link_to "Edit post", edit_emergency_path(@emergency)
+      p
+      - if @emergency.user == current_user   
+        = link_to "Delete post", emergency_path(@emergency), method: :delete, data:{confirm: 'Are you   sure?'}

@@ -3,14 +3,14 @@ class MessagesController < ApplicationController
   before_action :find_message, only: [:edit, :update, :destroy]
 
   def create
-    @message = Message.new(messages_params)
+    @message = Message.new(message_params)
     @message.emergency_id = params[:emergency_id]
     @message.user = current_user
 
     if @message.save
       redirect_to emergency_path(@message.emergency_id)
     else
-      render "emergency/show"
+      render "emergencies/show"
     end
   end
 
@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
   end
 
   def update
-    if @message.update(messages_params)
+    if @message.update(message_params)
       redirect_to emergency_path(@message.emergency_id), flash: {notice: 'Post successfuly updated'}
     else
       render :edit
@@ -34,12 +34,11 @@ class MessagesController < ApplicationController
   end
 
   private
+  def message_params
+    params.require(:message).permit(:text, :claim_closed)
+  end
 
-    def messages_params
-      params[:message].permit(:text, :claim_closed)
-    end
-
-    def find_message
-        @message = Message.find(params[:id])
-    end
+  def find_message
+    @message = Message.find(params[:id])
+  end
 end

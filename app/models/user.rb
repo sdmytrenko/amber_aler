@@ -32,5 +32,7 @@ class User < ApplicationRecord
   has_many :emergencies
   has_many :messages
 
-
+  def display_name
+    name.presence || "User ##{id}"
+  end
 end

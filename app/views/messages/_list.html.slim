@@ -8,10 +8,11 @@
       h4.media-heading
         /title can go here
         small
+          => message.user.display_name
           => message.created_at
           - if message.user == current_user
-            => link_to 'Edit', edit_emergency_message_path(emergency, message)
-            = link_to 'Delete', emergency_message_path(emergency, message), method: :delete, data: {confirm: 'Are you sure?'}
+            => link_to 'Edit', edit_message_path(message)
+            = link_to 'Delete', message_path(message), method: :delete, data: {confirm: 'Are you sure?'}
 
       = message.text
 
