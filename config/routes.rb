@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :emergencies do
-    member do
-      resources :messages, except: [:index, :new, :show]
-    end
+      resources :messages, except: [:index, :show, :new]
   end
 end

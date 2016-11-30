@@ -34,6 +34,7 @@ class EmergenciesController < ApplicationController
   end
 
   def show
+    @message = Message.new(emergency: @emergency)
   end
 
   def destroy

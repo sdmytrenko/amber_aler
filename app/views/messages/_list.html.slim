@@ -1,12 +1,12 @@
 ul
   - emergency.messages.each do |message|
     li
-      u = message.user.name || "Unnamed"
+      u = message.user.name || "Unnamed  ##{message.user.id}"
       i = message.created_at
       = message.text
       - if message.user == current_user
-        = link_to 'Edit', edit_message_path(emergency, message)
-        = link_to 'Delete', message_path(emergency, message), method: :delete, data:{confirm: 'Are you sure?'}
+        = link_to 'Edit', edit_emergency_message_path(emergency, message)
+        = link_to 'Delete', emergency_message_path(emergency, message), method: :delete, data:{confirm: 'Are you sure?'}
 
 = render 'messages/form', emergency: emergency
 

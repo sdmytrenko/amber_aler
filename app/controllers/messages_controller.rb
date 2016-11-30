@@ -4,11 +4,11 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(messages_params)
+    @message.emergency_id = params[:emergency_id]
     @message.user = current_user
-    @message.emergency = emergency
 
     if @message.save
-      redirect_to emergency_path(@emergency)
+      redirect_to emergency_path(@message.emergency_id)
     else
       render "emergency/show"
     end
@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
 
   def update
     if @message.update(messages_params)
-      redirect to emergency_path(@message.emergency), flash: {notice: 'Post successfuly updated'}
+      redirect_to emergency_path(@message.emergency_id), flash: {notice: 'Post successfuly updated'}
     else
       render :edit
     end
@@ -27,9 +27,9 @@ class MessagesController < ApplicationController
 
   def destroy
     if @message.destroy
-      redirect_to emergencies_path(@message.emergency)
+      redirect_to emergency_path(@message.emergency_id)
     else
-      redirect_to emergencies_path(@message.emergency), flash: {error: 'Message not deleted'}
+      redirect_to emergency_path(@message.emergency_id), flash: {error: 'Message not deleted'}
     end
   end
 
@@ -41,9 +41,5 @@ class MessagesController < ApplicationController
 
     def find_message
         @message = Message.find(params[:id])
-    end
-
-    def find_emergency
-      @emergency ||= Emergency.find(params[:id])
     end
 end

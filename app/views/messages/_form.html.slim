@@ -1,4 +1,4 @@
-= simple_form_for(@message) do |f|
+= simple_form_for([@message.emergency, @message]) do |f|
   = f.input :text
   - if @message.emergency && @message.emergency.user == current_user
     = f.input :claim_closed, as: :boolean
