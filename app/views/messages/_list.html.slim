@@ -1,13 +1,23 @@
-ul
-  - emergency.messages.each do |message|
-    li
-      u = message.user.name || "Unnamed  ##{message.user.id}"
-      i = message.created_at
-      = message.text
-      - if message.user == current_user
-        = link_to 'Edit', edit_emergency_message_path(emergency, message)
-        = link_to 'Delete', emergency_message_path(emergency, message), method: :delete, data:{confirm: 'Are you sure?'}
 
+- emergency.messages.each do |message|
+  div.media id="message-#{message.id}"
+    /user avatar
+    a.pull-left href='#'
+      img.media-object src="http://placehold.it/64x64" alt=message.user.name
+    div.media-body
+      h4.media-heading
+        /title can go here
+        small
+          => message.created_at
+          - if message.user == current_user
+            => link_to 'Edit', edit_emergency_message_path(emergency, message)
+            = link_to 'Delete', emergency_message_path(emergency, message), method: :delete, data: {confirm: 'Are you sure?'}
+
+      = message.text
+
+hr
+h4
+  | Leave a Message:
 = render 'messages/form', emergency: emergency
 
 
