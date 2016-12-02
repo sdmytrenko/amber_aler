@@ -2,7 +2,7 @@
   div.media id="message-#{message.id}"
     /user avatar
     a.pull-left href='#'
-      img.media-object src="http://placehold.it/64x64" alt=message.user.name
+      img.media-object src=avatar_url(message.user, 64) alt=message.user.name
     div.media-body
       h4.media-heading
         /title can go here
