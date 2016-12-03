@@ -1,9 +1,8 @@
-
 - emergency.messages.each do |message|
   div.media id="message-#{message.id}"
     /user avatar
     a.pull-left href='#'
-      img.media-object src="http://placehold.it/64x64" alt=message.user.name
+      img.media-object src=avatar_url(message.user, 64) alt=message.user.name
     div.media-body
       h4.media-heading
         /title can go here
@@ -14,7 +13,7 @@
             => link_to 'Edit', edit_message_path(message)
             = link_to 'Delete', message_path(message), method: :delete, data: {confirm: 'Are you sure?'}
 
-      = message.text
+      = sanitize message.text, tags: %w(p strong em u table thead tbody th tr td h4 h5 h6 pre br hr ul ol li blockquote), attributes: %w(id class style)
 
 hr
 h4
@@ -24,3 +23,7 @@ h4
 
 / = time_ago_in_words comment.created_at
 / |  ago
+
+/javascript:
+/  var data = new Identicon().toString();
+/  document.write('<img src="data:images/png;base64,' + data + '">');

@@ -1,0 +1,83 @@
+/! Page Content/
+.container
+  .row
+    /! Blog Entries Column/
+    .col-md-8
+      h1.page-header
+        | New Emergencies 
+        small last five
+
+      /! Blog Post body/
+      - @emergencies_list.each do |emergencies_list|
+        h2
+          = link_to emergencies_list.title
+        p.lead
+          | by #{link_to emergencies_list.user.name}
+        p
+          span.glyphicon.glyphicon-time
+          |  Posted on #{emergencies_list.created_at}
+        hr/
+        img.img-responsive alt="" src="http://placehold.it/900x300" /
+        hr/
+        p = link_to sanitize emergencies_list.description, tags: %w(p strong em u table thead tbody th tr td h4 h5 h6 pre br hr ul ol li blockquote), attributes: %w(id class style)
+        = link_to ('Read More <span class="glyphicon glyphicon-chevron-right"></span>').html_safe, emergency_path(emergencies_list), :class => "btn btn-primary"
+
+
+      /! Pager/
+      ul.pager
+        li.previous
+          a href="#"  ← Older
+        li.next
+          a href="#"  Newer →
+    /! Blog Sidebar Widgets Column/
+    .col-md-4
+      /! Blog Search Well/
+      .well
+        h4 Blog Search
+        .input-group
+          input.form-control type="text" /
+          span.input-group-btn
+            button.btn.btn-default type="button" 
+              span.glyphicon.glyphicon-search
+        /! /.input-group
+      /! Blog Categories Well/
+      .well
+        h4 Blog Categories
+        .row
+          .col-lg-6
+            ul.list-unstyled
+              li
+                a href="#"  Category Name
+              li
+                a href="#"  Category Name
+              li
+                a href="#"  Category Name
+              li
+                a href="#"  Category Name
+          /! /.col-lg-6
+          .col-lg-6
+            ul.list-unstyled
+              li
+                a href="#"  Category Name
+              li
+                a href="#"  Category Name
+              li
+                a href="#"  Category Name
+              li
+                a href="#"  Category Name
+          /! /.col-lg-6
+        /! /.row
+      /! Side Widget Well/
+      .well
+        h4 Side Widget Well
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.
+  /! /.row
+  hr/
+  /! Footer/
+  footer
+    .row
+      .col-lg-12
+        p Copyright © Your Website 2014
+      /! /.col-lg-12
+    /! /.row
+/! /.container
