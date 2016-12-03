@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :get_emergencies_list
 
   protected
 
@@ -18,4 +19,9 @@ class ApplicationController < ActionController::Base
       redirect_to new_user_session_path, :notice => 'please sign in'
     end
   end
+
+def get_emergencies_list
+    @emergencies_list = Emergency.last(5).reverse
+end
+
 end

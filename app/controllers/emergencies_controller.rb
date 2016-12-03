@@ -20,6 +20,8 @@ class EmergenciesController < ApplicationController
 
   def index
     @emergencies = Emergency.all
+    # @emergencies = Emergency.all.order('created_at').last(2)
+    # @emergencies = Emergency.last(5).reverse
   end
 
   def edit
