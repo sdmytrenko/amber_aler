@@ -10,7 +10,7 @@
       /! Blog Post body/
       - @emergencies_list.each do |emergencies_list|
         h2
-          = link_to emergencies_list.title
+          = link_to emergencies_list.title, emergency_path(emergencies_list)
         p.lead
           | by #{link_to emergencies_list.user.name}
         p
