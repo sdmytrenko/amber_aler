@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
 def get_emergencies_list
-    @emergencies_list = Emergency.last(5).reverse
+    @emergencies_list = Emergency.order(updated_at: :desc).limit(5)
 end
 
 end
