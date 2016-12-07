@@ -8,18 +8,20 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 
-gem "wysiwyg-rails"
-gem 'annotate'
-# gem 'quiet_assets'
-
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'devise-i18n'
 gem 'high_voltage'
 gem 'simple_form'
 gem 'slim-rails'
+gem "wysiwyg-rails"
+gem 'truncate_html'
+gem 'kaminari'
 
 group :development do
+  # gem 'quiet_assets'
+  gem 'annotate'
+
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'better_errors'

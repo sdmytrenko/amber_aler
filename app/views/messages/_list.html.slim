@@ -1,11 +1,11 @@
 - emergency.messages.each do |message|
   div.media id="message-#{message.id}"
-    /user avatar
+    /user avatar/
     a.pull-left href='#'
-      img.media-object src=avatar_url(message.user, 64) alt=message.user.name
+      = avatar_tag(message.user, size: 80, real: true, class: 'media-object avatar')
     div.media-body
       h4.media-heading
-        /title can go here
+        /title can go here/
         small
           => message.user.display_name
           => message.created_at
@@ -13,7 +13,7 @@
             => link_to 'Edit', edit_message_path(message)
             = link_to 'Delete', message_path(message), method: :delete, data: {confirm: 'Are you sure?'}
 
-      = sanitize message.text, tags: %w(p strong em u table thead tbody th tr td h4 h5 h6 pre br hr ul ol li blockquote), attributes: %w(id class style)
+      = sanitize_wysiwyg message.text
 
 hr
 h4
@@ -23,6 +23,19 @@ h4
     | Leave a Message:
     = render 'messages/form', emergency: emergency
 
+
+javascript:
+  $('.avatar').each(function(i, img) {
+    var $img = $(img)
+    if ($img.prop('naturalWidth') == 0) {
+      console.log($img.data('hash'))
+      var data = (new Identicon($img.data('hash'), 80)).toString()
+      console.log($img.data('hash'), data)
+      $img.attr('src', 'data:image/png;base64,' + data)
+    }
+    console.log($img, img.naturalWidth )
+    console.log(i, img)
+  })
 
 / = time_ago_in_words comment.created_at
 / |  ago

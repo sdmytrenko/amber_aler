@@ -1,19 +1,24 @@
-h1
-  |All emergencies
-table.table
-  thead
-    tr
-      th
-        | Name
-  tbody
+section
+  div.col-md-8
+    h1.page-header
+      | Recent Emergencies
+    
     - @emergencies.each do |emergency|
-      tr
-        td
-          = link_to emergency.title, emergency
-        td
-          - if emergency.user == current_user
-          = link_to "Edit", edit_emergency_path(emergency)
-        td
-          -if emergency.user == current_user
+      h2 = link_to emergency.title, emergency
+      p.lead = "by #{emergency.user.display_name}"
+      p
+        span.glyphicon.glyphicon-time>
+        span => "Posted on #{emergency.created_at}"
+        - if emergency.user == current_user
+          => link_to "Edit", edit_emergency_path(emergency)
           = link_to "Destroy", emergency_path(emergency), method: :delete, data:{confirm: 'Are you sure?'}
-= link_to "Create new emergency", new_emergency_path
+      hr
+      = sanitize_wysiwyg emergency.description, shorten: 100
+      = link_to 'Read More', emergency, class: "btn btn-primary"
+      hr
+       
+  div.col-md-4
+    div.well
+      h4
+        | Navigation
+      = link_to "Create new emergency", new_emergency_path
