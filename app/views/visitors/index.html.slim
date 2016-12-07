@@ -8,19 +8,19 @@
         small last five
 
       /! Blog Post body/
-      - @emergencies_list.each do |emergencies_list|
-        h2
-          = link_to emergencies_list.title, emergency_path(emergencies_list)
-        p.lead
-          | by #{link_to emergencies_list.user.name}
-        p
-          span.glyphicon.glyphicon-time
-          |  Posted on #{emergencies_list.created_at}
-        hr/
-        img.img-responsive alt="" src="http://placehold.it/900x300" /
-        hr/
-        p = link_to sanitize emergencies_list.description, tags: %w(p strong em u table thead tbody th tr td h4 h5 h6 pre br hr ul ol li blockquote), attributes: %w(id class style)
-        = link_to ('Read More <span class="glyphicon glyphicon-chevron-right"></span>').html_safe, emergency_path(emergencies_list), :class => "btn btn-primary"
+/      - @emergencies_list.each do |emergencies_list|
+/        h2
+/          = link_to emergencies_list.title, emergency_path(emergencies_list)
+/        p.lead
+/          | by #{link_to emergencies_list.user.name}
+/        p
+/          span.glyphicon.glyphicon-time
+/          |  Posted on #{emergencies_list.created_at}
+/        hr/
+/        img.img-responsive alt="" src="http://placehold.it/900x300" /
+/        hr/
+/        p = link_to sanitize emergencies_list.description, tags: %w(p strong em u table thead tbody th tr td h4 h5 h6 pre br hr ul ol li blockquote), attributes: %w(id class style)
+/        = link_to ('Read More <span class="glyphicon glyphicon-chevron-right"></span>').html_safe, emergency_path(emergencies_list), :class => "btn btn-primary"
 
 
       /! Pager/
