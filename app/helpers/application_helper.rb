@@ -10,10 +10,10 @@ module ApplicationHelper
     res
   end
 
-  def avatar_tag(user, size: 200, alt: nil, **options)
+  def avatar_tag(user, size: 200, alt: nil, real: false, **options)
     image_tag(
-      avatar_url(user, size: options[:size], real: options[:real]),
-      alt: (options[:alt] || user.name),
+      avatar_url(user, size: size, real: real),
+      alt: (alt || user.name),
       class: options[:class],
       data: {hash: email_hexdigest_for(user)})
   end
