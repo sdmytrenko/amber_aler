@@ -13,7 +13,7 @@
 
 class Emergency < ApplicationRecord
   belongs_to :user # створюємо зв’язки один до багатьох
-  has_many :messages, dependent: :destroy
+  has_many :messages, dependent: :destroy # Видалення всіх коментарів при видаленні поста
   # validates :title, :description, presence: true
 
   STATUSES = [ACTIVE = :active, CLOSED = :closed, ARCHIVED = :archived]
