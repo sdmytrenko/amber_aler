@@ -7,6 +7,10 @@ section
       h2 = link_to emergency.title, emergency
       p.lead = "by #{emergency.user.display_name}"
       p
+        - if emergency.updated_at != emergency.created_at
+          span.glyphicon.glyphicon-time>
+          span => "Updated on #{emergency.updated_at}"
+
         span.glyphicon.glyphicon-time>
         span => "Posted on #{emergency.created_at}"
         - if emergency.user == current_user
