@@ -34,7 +34,8 @@ class EmergenciesController < ApplicationController
   end
 
   def show
-    @message = Message.new(emergency: @emergency)
+    @message = Message.new(emergency: @emergency) # Для того, щоб у в’юсі були меседжі simple_form_for([@emergency, @message])
+    @messages = @emergency.messages.page(params[:page]).per(5)
   end
 
   def destroy
