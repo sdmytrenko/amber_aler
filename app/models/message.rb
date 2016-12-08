@@ -21,4 +21,16 @@ class Message < ApplicationRecord
   # belongs_to :user, class_name: 'User', foreign_key: 'user_id'
   belongs_to :emergency
   # validates :text, presence: true
+
+  before_save do |record|
+    emergency.update(status: Emergency::CLOSED) if claim_closed?
+  end
+
+  before_save    :touch_emergency!
+  before_destroy :touch_emergency!
+
+  protected
+  def touch_emergency!
+    emergency.touch
+  end
 end

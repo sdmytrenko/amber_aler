@@ -29,8 +29,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :emergencies
-  has_many :messages
+  has_many :emergencies, dependent: :destroy # при видаленні юзера стирається все
+  has_many :messages,    dependent: :destroy
 
   def display_name
     name.presence || "User ##{id}"
