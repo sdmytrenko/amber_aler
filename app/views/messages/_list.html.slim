@@ -17,11 +17,12 @@
 
 hr
 h4
-  - if emergency.messages.where(claim_closed: true).take
-    | Author closed the opportunity to comment
-  -else
+  - if emergency.allow_messages_for? current_user
     | Leave a Message:
     = render 'messages/form', emergency: emergency
+  - else
+    | Author closed the opportunity to comment
+
 
 / = time_ago_in_words comment.created_at
 / |  ago
