@@ -32,6 +32,8 @@ class User < ApplicationRecord
   has_many :emergencies, dependent: :destroy # при видаленні юзера стирається все
   has_many :messages,    dependent: :destroy
 
+  validates :name, presence: true, length: {minimum: 5}
+
   def display_name
     name.presence || "User ##{id}"
   end
