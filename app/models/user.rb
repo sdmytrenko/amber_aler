@@ -17,6 +17,7 @@
 #  updated_at             :datetime         not null
 #  name                   :string
 #  avatar                 :string
+#  last_seen_at           :datetime
 #
 # Indexes
 #
