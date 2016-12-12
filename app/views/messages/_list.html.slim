@@ -3,7 +3,7 @@
     /user avatar/
     a.pull-left href='#'
       /= avatar_tag(message.user, size: 80, real: true, class: 'media-object avatar')/
-      img.media-object src="http://placehold.it/64x64" alt=message.user.name
+      = image_tag message.user.avatar.url(:thumb) if message.user.avatar?
     div.media-body
       h4.media-heading
         /title can go here/
