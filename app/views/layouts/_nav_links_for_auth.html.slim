@@ -11,6 +11,7 @@
   span.dropdown.nav.navbar-right.navbar-brand.navbar-top-links
     span.dropdown-toggle data-toggle="dropdown"
       / => avatar_tag(current_user, size: 18, real: true, class: 'media-object avatar')/
+      / = avatar_for(current_user, size: 25)/
       => current_user.display_name
       b.caret
     ul.dropdown-menu
