@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :set_locale
+  around_filter :set_time_zone
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_last_seen_at, if: proc { user_signed_in? }
 
@@ -20,6 +21,11 @@ class ApplicationController < ActionController::Base
     I18n.locale ||= current_user.try(:locale) # пользователбское предпочтение локали через интерфейс приложения, хранится в базе данных
     I18n.locale ||= extract_locale_from_accept_language_header # Определение локали из языка заголовка
     I18n.locale ||= I18n.default_locale
+  end
+
+  def set_time_zone(&block)
+    time_zone = params[:time_zone] || current_user.try(:time_zone) || 'Kyiv'
+    Time.use_zone(time_zone, &block)
   end
 
   def extract_locale_from_accept_language_header # Определение локали из языка заголовка

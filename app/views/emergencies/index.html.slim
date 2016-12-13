@@ -8,10 +8,10 @@ section
       p
         - if emergency.updated_at != emergency.created_at
           span.glyphicon.glyphicon-time>
-          span => "#{t('emergency.updated')}  #{emergency.updated_at}"
+          span => "#{t('emergency.updated')}  #{l(emergency.updated_at, format: :short)}"
 
         span.glyphicon.glyphicon-time>
-        span => "#{t('emergency.created')}  #{emergency.created_at}"
+        span => "#{t('emergency.created')}  #{l(emergency.created_at, format: :short)}"
         b => t('emergency.comments', count: emergency.messages.count)
         - if emergency.user == current_user
           => link_to t('emergency.edit'), edit_emergency_path(emergency)

@@ -6,7 +6,7 @@ section
       hr
       p
         span.glyphicon.glyphicon-time>
-        span = "#{t('emergency.created')}  #{@emergency.created_at}"
+        span = "#{t('emergency.created')}  #{l(@emergency.created_at, format: :short)}"
       hr
       = sanitize_wysiwyg @emergency.description
 
