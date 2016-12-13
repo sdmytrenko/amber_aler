@@ -1,28 +1,29 @@
 section
   div.col-md-8
-    h1.page-header = t('root_page.emergencies.recent_emergencies')
+    h1.page-header = t('emergencies.recent_emergencies')
 
     - @emergencies.each do |emergency|
       h2 = link_to emergency.title, emergency
-      p.lead = t('root_page.emergency.author', name:emergency.user.display_name)
+      p.lead = t('emergency.author', name:emergency.user.display_name)
       p
         - if emergency.updated_at != emergency.created_at
           span.glyphicon.glyphicon-time>
-          span => "#{t('root_page.emergency.updated')}  #{emergency.updated_at}"
+          span => "#{t('emergency.updated')}  #{emergency.updated_at}"
 
         span.glyphicon.glyphicon-time>
-        span => "#{t('root_page.emergency.created')}  #{emergency.created_at}"
+        span => "#{t('emergency.created')}  #{emergency.created_at}"
+        b => t('emergency.comments', count: emergency.messages.count)
         - if emergency.user == current_user
-          => link_to t('root_page.emergency.edit'), edit_emergency_path(emergency)
-          = link_to t('root_page.emergency.del'), emergency_path(emergency), method: :delete, data:{confirm: 'Are you sure?'}
+          => link_to t('emergency.edit'), edit_emergency_path(emergency)
+          = link_to t('emergency.del'), emergency_path(emergency), method: :delete, data:{confirm: 'Are you sure?'}
       hr
       = sanitize_wysiwyg emergency.description, shorten: 100
-      = link_to t('root_page.emergency.more'), emergency, class: "btn btn-primary"
+      = link_to t('emergency.more'), emergency, class: "btn btn-primary"
       hr
 
     = paginate @emergencies
 
   div.col-md-4
     div.well
-      h4 = t('root_page.navigation')
-      = link_to t('root_page.emergencies.new_emergency'), new_emergency_path
+      h4 = t('sidebar.navigation')
+      = link_to t('sidebar.new_emergency'), new_emergency_path

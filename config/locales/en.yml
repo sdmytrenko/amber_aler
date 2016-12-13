@@ -1,17 +1,21 @@
 en:
-  root_page:
-    emergencies:
-      recent_emergencieemergenciess: Recent Emergencies
-      new_emergency: Create new emergency
-    emergency:
-      author: 'by %{name}'
-      edit: Edit
-      del: Destroy
-      more: Read More
-      created: Posted on
-      updated: Updated on
-    navigation: Navigation
-  emergency_show:
+  emergencies:
+    recent_emergencies: Recent Emergencies
+  emergency:
     author: 'by %{name}'
+    comments:
+      one: 1 comment
+      other: '%{count} comments'
+      zero: no comments
+    edit: Edit
+    del: Destroy
+    more: Read More
     created: Posted on
+    updated: Updated on
+  sidebar:
+    navigation: Navigation
+    all_emergencies: All Emergencies
+    new_emergency: Create new emergency
+    edit_emergency: Edit post
+    delete_emergency: Delete post
 

@@ -1,16 +1,21 @@
 uk:
-  root_page:
-    emergencies:
-      recent_emergencies: Недавні Події
-      new_emergency: Створити нову подію
-    emergency:
-      author: 'автор %{name}'
-      edit: Редагувати
-      del: Видалити
-      more: Детальніше
-      created: Створено
-      updated: Обновлено
-    navigation: Опції
-  emergency_show:
+  emergencies:
+    recent_emergencies: Недавні Події
+  emergency:
     author: 'автор %{name}'
+    comments:
+      many: '%{count} коментарі'
+      one: '%{count} коментар'
+      other: '%{count} коментарів'
+      zero: жодного коментаря
+    edit: Редагувати
+    del: Видалити
+    more: Детальніше
     created: Створено
+    updated: Обновлено
+  sidebar:
+    navigation: Опції
+    all_emergencies: Всі події
+    new_emergency: Створити нову подію
+    edit_emergency: Редагувати подію
+    delete_emergency: Видалити подію
