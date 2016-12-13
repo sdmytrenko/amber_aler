@@ -2,11 +2,11 @@ section
   div.col-md-8
     div.fr-view
       h1.page-header = @emergency.title
-      p.lead = "by #{@emergency.user.display_name}"
+      p.lead = t('emergency.author', name:@emergency.user.display_name)
       hr
       p
         span.glyphicon.glyphicon-time>
-        span = "Posted on #{@emergency.created_at}"
+        span = "#{t('emergency.created')}  #{l(@emergency.created_at, format: :short)}"
       hr
       = sanitize_wysiwyg @emergency.description
 
@@ -14,12 +14,11 @@ section
 
   div.col-md-4
     div.well
-      h4
-        | Navigation
-      = link_to "All Emergencirs", emergencies_path
+      h4 = t('sidebar.navigation')
+      = link_to t('sidebar.all_emergencies'), emergencies_path
       p
       - if @emergency.user == current_user    
-        = link_to "Edit post", edit_emergency_path(@emergency)
+        = link_to t('sidebar.edit_emergency'), edit_emergency_path(@emergency)
       p
       - if @emergency.user == current_user   
-        = link_to "Delete post", emergency_path(@emergency), method: :delete, data:{confirm: 'Are you   sure?'}
+        = link_to t('sidebar.delete_emergency'), emergency_path(@emergency), method: :delete, data:{confirm: 'Are you   sure?'}

@@ -1,0 +1,82 @@
+uk:
+  emergencies:
+    recent_emergencies: Недавні Події
+  emergency:
+    author: 'автор %{name}'
+    comments:
+      many: '%{count} коментарі'
+      one: '%{count} коментар'
+      other: '%{count} коментарів'
+      zero: жодного коментаря
+    edit: Редагувати
+    del: Видалити
+    more: Детальніше
+    created: Створено
+    updated: Обновлено
+  sidebar:
+    navigation: Опції
+    all_emergencies: Всі події
+    new_emergency: Створити нову подію
+    edit_emergency: Редагувати подію
+    delete_emergency: Видалити подію
+
+  date:
+    abbr_day_names:
+    - нд.
+    - пн.
+    - вт.
+    - ср.
+    - чт.
+    - пт.
+    - сб.
+    abbr_month_names:
+    -
+    - січ.
+    - лют.
+    - бер.
+    - квіт.
+    - трав.
+    - черв.
+    - лип.
+    - серп.
+    - вер.
+    - жовт.
+    - лист.
+    - груд.
+    day_names:
+    - неділя
+    - понеділок
+    - вівторок
+    - середа
+    - четвер
+    - п'ятниця
+    - субота
+    formats:
+      default: "%d.%m.%Y"
+      long: "%d %B %Y"
+      short: "%d %b"
+    month_names:
+    -
+    - Січня
+    - Лютого
+    - Березня
+    - Квітня
+    - Травня
+    - Червня
+    - Липня
+    - Серпня
+    - Вересня
+    - Жовтня
+    - Листопада
+    - Грудня
+    order:
+    - :day
+    - :month
+    - :year
+  time:
+    am: до полудня
+    formats:
+      default: "%a, %d %b %Y, %H:%M:%S %z"
+      long: "%d %B %Y, %H:%M"
+      short: "%d %b, %H:%M"
+    pm: по полудні

@@ -13,6 +13,16 @@
         div
           | Currently waiting confirmation for: #{resource.unconfirmed_email}
     fieldset
+      b
+        | Your avatar
+      .pull-right
+        = image_tag @user.avatar.url(:thumb) if @user.avatar?
+      b.pull-left
+        | Upload avatar
+        p
+        = f.file_field :avatar
+    br
+    fieldset
       p Leave these fields blank if you don't want to change your password.
       .form-group
         = f.label :password

@@ -2,7 +2,8 @@
   div.media id="message-#{message.id}"
     /user avatar/
     a.pull-left href='#'
-      = avatar_tag(message.user, size: 80, real: true, class: 'media-object avatar')
+      /= avatar_tag(message.user, size: 80, real: true, class: 'media-object avatar')/
+      = avatar_for(message.user, size: 64)
     div.media-body
       h4.media-heading
         /title can go here/

@@ -17,6 +17,8 @@ gem 'slim-rails'
 gem "wysiwyg-rails"
 gem 'truncate_html'
 gem 'kaminari'
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0' # Add user avatar
+gem "mini_magick" # for carrierwave
 
 group :development do
   # gem 'quiet_assets'

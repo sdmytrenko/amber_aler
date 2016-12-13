@@ -16,6 +16,8 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  name                   :string
+#  avatar                 :string
+#  last_seen_at           :datetime
 #
 # Indexes
 #
@@ -33,6 +35,8 @@ class User < ApplicationRecord
   has_many :messages,    dependent: :destroy
 
   validates :name, presence: true, length: {minimum: 5}
+
+  mount_uploader :avatar, AvatarUploader
 
   def display_name
     name.presence || "User ##{id}"
