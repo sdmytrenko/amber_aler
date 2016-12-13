@@ -1,1 +1,17 @@
 en:
+  root_page:
+    emergencies:
+      recent_emergencieemergenciess: Recent Emergencies
+      new_emergency: Create new emergency
+    emergency:
+      author: 'by %{name}'
+      edit: Edit
+      del: Destroy
+      more: Read More
+      created: Posted on
+      updated: Updated on
+    navigation: Navigation
+  emergency_show:
+    author: 'by %{name}'
+    created: Posted on
+

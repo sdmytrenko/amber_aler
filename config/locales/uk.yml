@@ -1,0 +1,16 @@
+uk:
+  root_page:
+    emergencies:
+      recent_emergencies: Недавні Події
+      new_emergency: Створити нову подію
+    emergency:
+      author: 'автор %{name}'
+      edit: Редагувати
+      del: Видалити
+      more: Детальніше
+      created: Створено
+      updated: Обновлено
+    navigation: Опції
+  emergency_show:
+    author: 'автор %{name}'
+    created: Створено
