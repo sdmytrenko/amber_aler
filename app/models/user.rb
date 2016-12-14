@@ -17,7 +17,7 @@
 #  updated_at             :datetime         not null
 #  name                   :string
 #  avatar                 :string
-#  last_seen_at           :datetime
+#  last_seen              :datetime
 #
 # Indexes
 #
@@ -29,7 +29,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :lastseenable
 
   has_many :emergencies, dependent: :destroy # при видаленні юзера стирається все
   has_many :messages,    dependent: :destroy
