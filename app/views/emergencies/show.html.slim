@@ -14,8 +14,7 @@ section
 
 hr
 h4
-  /- if emergency.allow_messages_for? current_user/
-  - if @emergency.status == "active" || current_user.name == @emergency.user.name
+  - if @emergency.allow_messages_for? current_user
     | Leave a Message:
     = render 'messages/form', emergency: @emergency
   - else
