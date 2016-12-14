@@ -10,7 +10,16 @@ section
       hr
       = sanitize_wysiwyg @emergency.description
 
-    = render 'messages/list', emergency: @emergency
+    = render 'messages/list'
+
+hr
+h4
+  /- if emergency.allow_messages_for? current_user/
+  - if @emergency.status == "active" || current_user.name == @emergency.user.name
+    | Leave a Message:
+    = render 'messages/form', emergency: @emergency
+  - else
+    | Author closed the opportunity to comment
 
   div.col-md-4
     div.well
