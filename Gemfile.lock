@@ -186,7 +186,6 @@ GEM
       interception (>= 0.5)
       pry
     public_suffix (2.0.4)
-    puma (3.6.2)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -207,12 +206,7 @@ GEM
       nokogiri (~> 1.6.0)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
     rails_layout (1.0.34)
-    rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.5)
     railties (5.0.0.1)
       actionpack (= 5.0.0.1)
       activesupport (= 5.0.0.1)
@@ -350,9 +344,7 @@ DEPENDENCIES
   pg
   pry-rails
   pry-rescue
-  puma
   rails (~> 5.0.0)
-  rails_12factor
   rails_layout
   rb-fchange
   rb-fsevent
