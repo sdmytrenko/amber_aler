@@ -10,6 +10,8 @@ html
     == csrf_meta_tags
   body
     == render 'layouts/navigation'
-    div.container[role="main"]
+    div.container.add-custom-main-background[role="main"]
       == render 'layouts/messages'
       == yield
+
+/ div.container.add-custom-body-background

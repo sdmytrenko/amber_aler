@@ -2,3 +2,9 @@
 .navbar-default .nav-light-on:focus {
   color: #772953;
   background-color: none;
+}
+
+.add-custom-main-background {
+    border-radius: 8px;
+    background-color: #ffffff;
+}
