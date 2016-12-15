@@ -25,6 +25,6 @@ class Emergency < ApplicationRecord
   scope :not_archived, -> { where(status: STATUSES - [ARCHIVED]) }
 
   def allow_messages_for?(user)
-    status == ACTIVE.to_s.downcase || user == self.user
+    status == ACTIVE.to_s || user == self.user
   end
 end
