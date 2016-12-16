@@ -3,6 +3,7 @@ uk:
     recent_emergencies: Недавні Події
   emergency:
     author: 'автор %{name}'
+    by_author: 'користувачем '
     comments:
       many: '%{count} коментарі'
       one: '%{count} коментар'
@@ -12,7 +13,7 @@ uk:
     del: Видалити
     more: Детальніше
     created: Створено
-    updated: Обновлено
+    updated: Останній раз обновлено
   sidebar:
     navigation: Опції
     all_emergencies: Всі події
