@@ -1,32 +1,47 @@
-section
-  div.col-md-8
-    div.fr-view
-      h1.page-header = @emergency.title
-      p.lead = t('emergency.author', name:@emergency.user.display_name)
+.container
+  .row
+    .col-md-8
+      h1.add-text-purple-color = @emergency.title
+      - if @emergency.status == "closed"
+        .label.label-danger
+          | CLOSED
+      p
+      h3.small
+        - if @emergency.user == current_user
+          | You created this emergancy on 
+          span => " #{l(@emergency.created_at, format: :short)}"
+        -else
+          span.glyphicon.glyphicon-time>
+          span => "#{t('emergency.created')}  #{l(@emergency.created_at, format: :short)}"
+          = t('emergency.by_author')
+          = link_to (@emergency.user.name), user_path(@emergency.user.id)
+      br
+      h4
+        = sanitize_wysiwyg @emergency.description
+      br
       hr
-      p
-        span.glyphicon.glyphicon-time>
-        span = "#{t('emergency.created')}  #{l(@emergency.created_at, format: :short)}"
+      = render 'messages/list'
+
       hr
-      = sanitize_wysiwyg @emergency.description
+      h4.custom-container
+        - if @emergency.allow_messages_for? current_user
+          | Leave a Message:
+          p
+          = render 'messages/form', emergency: @emergency
+        - else
+          | Author closed the opportunity to comment
 
-    = render 'messages/list'
+    section
+      div.col-md-4.add-custom-widh
+        div.well
+          h4 = t('sidebar.navigation')
+          = link_to t('sidebar.all_emergencies'), emergencies_path
+          p
+          - if @emergency.user == current_user    
+            = link_to t('sidebar.edit_emergency'), edit_emergency_path(@emergency)
+          p
+          - if @emergency.user == current_user   
+            = link_to t('sidebar.delete_emergency'), emergency_path(@emergency), method: :delete, data:{confirm: 'Are you   sure?'}
 
-hr
-h4
-  - if @emergency.allow_messages_for? current_user
-    | Leave a Message:
-    = render 'messages/form', emergency: @emergency
-  - else
-    | Author closed the opportunity to comment
 
-  div.col-md-4
-    div.well
-      h4 = t('sidebar.navigation')
-      = link_to t('sidebar.all_emergencies'), emergencies_path
-      p
-      - if @emergency.user == current_user    
-        = link_to t('sidebar.edit_emergency'), edit_emergency_path(@emergency)
-      p
-      - if @emergency.user == current_user   
-        = link_to t('sidebar.delete_emergency'), emergency_path(@emergency), method: :delete, data:{confirm: 'Are you   sure?'}
+/ p.lead = t('emergency.by_author', name:@emergency.user.display_name)/
