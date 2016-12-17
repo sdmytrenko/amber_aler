@@ -3,6 +3,7 @@ en:
     recent_emergencies: Recent Emergencies
   emergency:
     author: 'by %{name}'
+    by_author: 'by user '
     comments:
       one: 1 comment
       other: '%{count} comments'
@@ -11,7 +12,7 @@ en:
     del: Destroy
     more: Read More
     created: Posted on
-    updated: Updated on
+    updated: Last updated on
   sidebar:
     navigation: Navigation
     all_emergencies: All Emergencies

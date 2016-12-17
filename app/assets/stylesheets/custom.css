@@ -1,0 +1,51 @@
+.navbar-default .nav-light-on:hover,
+.navbar-default .nav-light-on:focus {
+  color: #772953;
+  background-color: none;
+}
+
+.custom-container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 80px;
+}
+
+.round-image {
+  background-color: white;
+    border: 1px solid #d9d9d9;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    margin-top: 4px;
+    margin-right: 4px;
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    text-align: center;
+    img { width: 100% }
+}
+
+.add-custom-main-background {
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.add-white-background {
+  background-color: #ffffff !important;
+}
+
+.add-text-purple-color {
+  color: #772953;
+}
+
+.add-text-orange-color {
+  color: #e95420;
+}
+
+.add-custom-widh {
+  width: 31% !important;
+}
+  
+  /*margin: 10px 10px 10px 10px;*/
