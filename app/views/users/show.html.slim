@@ -1,19 +1,6 @@
 section
   div.col-md-8
-    div.media
-      h2 User profile
-      a.pull-left
-        = avatar_for(@user, size: 100)
-      div.media-body
-        h4.media-heading
-          | Name: #{@user.name if @user.name}
-          p
-          | Email: #{@user.email if @user.email}
-          p
-          | Info:
-          p
-          | Status:
-
+    = render 'user_info'
   div.col-md-4
     div.well
       p
@@ -23,13 +10,7 @@ section
       p
       = link_to 'Test2'
 
-hr
-span => "Regisry on: #{@user.created_at}"
-p
-span => "Last activity: #{}"
-p
-span => "Location:"
-hr
+
 
 section
   div.col-md-4

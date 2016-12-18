@@ -12,19 +12,31 @@
   padding-bottom: 80px;
 }
 
+.avatar-image {
+  border-radius: 50%
+}
+
 .round-image {
   background-color: white;
     border: 1px solid #d9d9d9;
     border-radius: 25px;
-    -moz-border-radius: 25px;
-    -webkit-border-radius: 25px;
-    margin-top: 4px;
+    margin-top: 2px;
     margin-right: 4px;
     height: 50px;
     width: 50px;
     overflow: hidden;
     text-align: center;
     img { width: 100% }
+}
+
+.round-image-profile {
+  background-color: white;
+    border: 3px solid #772953;
+    border-radius: 50%;
+    margin-top: 2px;
+    margin-right: 15px;
+    overflow: hidden;
+    text-align: center;
 }
 
 .add-custom-main-background {
