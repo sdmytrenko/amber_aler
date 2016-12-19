@@ -1,29 +1,45 @@
-section
-  div.col-md-8
-    h1.page-header = t('emergencies.recent_emergencies')
+.container
+  .row
+    .col-md-8
+      h1.page-header = t('emergencies.recent_emergencies')
+      - @emergencies.each do |emergency|
+        h2.add-text-orange-color = emergency.title
+        - if emergency.status == 'closed'
+          .label.label-danger
+            | CLOSED
+        h3
+          = sanitize_wysiwyg emergency.description, shorten: 100
+        p
+        p
+        h3.small
+          - if emergency.updated_at != emergency.created_at
+            span.glyphicon.glyphicon-time>
+            span => "#{t('emergency.updated')}  #{l(emergency.updated_at, format: :short)}"
+        .small
+          - if emergency.user == current_user
+            | You created this emergancy on 
+            span => " #{l(emergency.created_at, format: :short)}"
+            | , you can: 
+            => link_to t('emergency.edit'), edit_emergency_path(emergency)
+            = link_to t('emergency.del'), emergency_path(emergency), method: :delete, data:{confirm: 'Are you sure?'}
+          -else
+            span.glyphicon.glyphicon-time>
+            span => "#{t('emergency.created')}  #{l(emergency.created_at, format: :short)}"
+            | by 
+            = link_to (emergency.user.name), user_path(emergency.user.id)
 
-    - @emergencies.each do |emergency|
-      h2 = link_to emergency.title, emergency
-      p.lead = t('emergency.author', name:emergency.user.display_name)
-      p
-        - if emergency.updated_at != emergency.created_at
-          span.glyphicon.glyphicon-time>
-          span => "#{t('emergency.updated')}  #{l(emergency.updated_at, format: :short)}"
+          p
+          b => t('emergency.comments', count: emergency.messages.count)
 
-        span.glyphicon.glyphicon-time>
-        span => "#{t('emergency.created')}  #{l(emergency.created_at, format: :short)}"
-        b => t('emergency.comments', count: emergency.messages.count)
-        - if emergency.user == current_user
-          => link_to t('emergency.edit'), edit_emergency_path(emergency)
-          = link_to t('emergency.del'), emergency_path(emergency), method: :delete, data:{confirm: 'Are you sure?'}
-      hr
-      = sanitize_wysiwyg emergency.description, shorten: 100
-      = link_to t('emergency.more'), emergency, class: "btn btn-primary"
-      hr
+        p
+        = link_to t('emergency.more'), emergency, class: "btn btn-primary"
+        hr
 
-    = paginate @emergencies
+      = paginate @emergencies
 
-  div.col-md-4
-    div.well
-      h4 = t('sidebar.navigation')
-      = link_to t('sidebar.new_emergency'), new_emergency_path
+    section
+      div.col-md-4.add-custom-widh
+        div.well
+          h4 = t('sidebar.navigation')
+          = link_to t('sidebar.new_emergency'), new_emergency_path
+

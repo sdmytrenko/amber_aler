@@ -1,47 +1,14 @@
-section
-  div.col-md-8
-    div.media
-      h2 User profile
-      a.pull-left
-        = avatar_for(@user, size: 100)
-      div.media-body
-        h4.media-heading
-          | Name: #{@user.name if @user.name}
-          p
-          | Email: #{@user.email if @user.email}
-          p
-          | Info:
-          p
-          | Status:
+.custom-container
+  section
+    div.col-md-8
+      = render 'user_info'
+    div.col-md-4
+      div.well
+        p
+        = link_to 'Edit account', edit_user_registration_path
+        p
+        = link_to 'Test1'
+        p
+        = link_to 'Test2'
 
-  div.col-md-4
-    div.well
-      p
-      = link_to 'Edit account', edit_user_registration_path
-      p
-      = link_to 'Test1'
-      p
-      = link_to 'Test2'
-
-hr
-span => "Regisry on: #{@user.created_at}"
-p
-span => "Last activity: #{}"
-p
-span => "Location:"
-hr
-
-section
-  div.col-md-4
-    p
-    h3 Recent emergencies
-    - @user.emergencies.each do |emergency|
-      p
-      = link_to emergency.title, emergency_path(emergency.id)
-      p
-  div.col-md-4
-    p
-    h3 Recent messages
-    - @user.messages.each do |message|
-      p
-      = link_to (sanitize_wysiwyg message.text), emergency_path(message.emergency_id)
+  = render 'user_activity'

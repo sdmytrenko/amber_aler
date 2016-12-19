@@ -1,0 +1,30 @@
+div.media
+  h2.add-text-purple-color User profile
+  a.pull-left
+    .round-image-profile
+      = avatar_for(@user, size: 100)
+  div.media-body
+    h4.media-heading
+      | Name: #{@user.name if @user.name}
+      - if @user == current_user
+        p
+        | Email: #{@user.email if @user.email}
+      p
+      | Info:
+      p
+      -if online(@user)
+        .label.label-success
+          | ONLINE
+      -else
+        .label.label-default
+          | OFFLINE
+
+
+
+  hr
+  span => "Regisry on: #{@user.created_at.to_formatted_s(:short)}"
+  p
+  span => "Last activity: #{@user.last_seen.to_formatted_s(:short)}"
+  p
+  span => "Location:"
+  hr

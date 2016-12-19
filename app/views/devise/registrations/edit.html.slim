@@ -12,7 +12,7 @@
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         div
           | Currently waiting confirmation for: #{resource.unconfirmed_email}
-    fieldset
+    fieldset.add-white-background
       b
         | Your avatar
       .pull-right
@@ -22,7 +22,7 @@
         p
         = f.file_field :avatar
     br
-    fieldset
+    fieldset.add-white-background
       p Leave these fields blank if you don't want to change your password.
       .form-group
         = f.label :password
@@ -30,7 +30,7 @@
       .form-group
         = f.label :password_confirmation
         = f.password_field :password_confirmation, class: 'form-control'
-    fieldset
+    fieldset.add-white-background
       p You must enter your current password to make changes.
       .form-group
         = f.label :current_password
