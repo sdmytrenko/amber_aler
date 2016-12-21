@@ -12,12 +12,13 @@ div.media
       p
       | Info:
       p
-      -if online(@user)
-        .label.label-success
-          | ONLINE
-      -else
-        .label.label-default
-          | OFFLINE
+      = online_status(@user)
+/      -if online(@user)/
+/        .label.label-success/
+/          | ONLINE/
+/      -else/
+/        .label.label-default/
+/          | OFFLINE/
 
 
 
