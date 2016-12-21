@@ -1,0 +1,38 @@
+.container.custom-container
+  .row
+    .col-md-8
+      h1.add-text-purple-color
+        |All emergencies
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th
+              | Emergency
+            th
+              | Status
+            th 
+              | Messages
+            th 
+              | Last answer
+
+        tbody
+          - @emergencies.each do |emergency|
+            tr
+              th 
+                = link_to emergency.title, emergency_path(emergency)
+                h6.small
+                  | Author: 
+                  = link_to emergency.user.name, user_path(emergency.user.id)
+                  |  on 
+                  = emergency.created_at.to_formatted_s(:short)
+              th 
+                - if emergency.status == "closed"
+                  .label.label-danger
+                    | CLOSED
+                - else 
+                  .label.label-success
+                    | OPEN
+              th
+                = emergency.messages.size
+              th
+                = emergency.updated_at.to_formatted_s(:short)
