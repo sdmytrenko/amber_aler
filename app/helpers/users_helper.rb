@@ -16,7 +16,7 @@ module UsersHelper
     if user.last_seen > 10.minutes.ago 
       content_tag :div, "ONLINE", class: 'label label-success'
     else
-      content_tag :div, "OFFLINE", class: 'label label-warning'
+      content_tag :div, "OFFLINE", class: 'label label-default'
     end
   end
 

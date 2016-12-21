@@ -4,8 +4,13 @@ en:
   emergency:
     author: 'by %{name}'
     by_author: 'by user '
+    your_thing: 'You created this emergency on %{time}, you can: '
+    your_thing2: 'You created this emergency on %{time}'
     comments:
       one: 1 comment
+      two: '%{count} comments'
+      three: '%{count} comments'
+      four: '%{count} comments'
       other: '%{count} comments'
       zero: no comments
     edit: Edit
@@ -13,10 +18,14 @@ en:
     more: Read More
     created: Posted on
     updated: Last updated on
+  message:
+    leave_message: 'Leave a Message: '
+    message_closed: Author closed the opportunity to comment
   sidebar:
     navigation: Navigation
     all_emergencies: All Emergencies
     new_emergency: Create new emergency
     edit_emergency: Edit post
     delete_emergency: Delete post
+    about_us: About Us
 

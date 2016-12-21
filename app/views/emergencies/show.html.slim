@@ -8,8 +8,7 @@
       p
       h3.small
         - if @emergency.user == current_user
-          | You created this emergancy on 
-          span => " #{l(@emergency.created_at, format: :short)}"
+          = t('emergency.your_thing2', time: l(@emergency.created_at, format: :short))
         -else
           span.glyphicon.glyphicon-time>
           span => "#{t('emergency.created')}  #{l(@emergency.created_at, format: :short)}"
@@ -25,11 +24,11 @@
       hr
       h4.custom-container
         - if @emergency.allow_messages_for? current_user
-          | Leave a Message:
+          = t('message.leave_message')
           p
           = render 'messages/form', emergency: @emergency
         - else
-          | Author closed the opportunity to comment
+          = t('message.message_closed')
 
     section
       div.col-md-4.add-custom-widh

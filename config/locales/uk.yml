@@ -4,9 +4,14 @@ uk:
   emergency:
     author: 'автор %{name}'
     by_author: 'користувачем '
+    your_thing: 'Ви створили цю подію %{time}, ви можете: '
+    your_thing2: 'Ви створили цю подію %{time}'
     comments:
       many: '%{count} коментарі'
       one: '%{count} коментар'
+      two: '%{count} коментаря'
+      three: '%{count} коментаря'
+      four: '%{count} коментаря'
       other: '%{count} коментарів'
       zero: жодного коментаря
     edit: Редагувати
@@ -14,12 +19,16 @@ uk:
     more: Детальніше
     created: Створено
     updated: Останній раз обновлено
+  message:
+    leave_message: 'Залиште ваше повідомлення:'
+    message_closed: Автор заборонив можливість коментувати
   sidebar:
     navigation: Опції
     all_emergencies: Всі події
     new_emergency: Створити нову подію
     edit_emergency: Редагувати подію
     delete_emergency: Видалити подію
+    about_us: Про нас
 
   date:
     abbr_day_names:

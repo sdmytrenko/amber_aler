@@ -17,15 +17,13 @@
             span => "#{t('emergency.updated')}  #{l(emergency.updated_at, format: :short)}"
         .small
           - if emergency.user == current_user
-            | You created this emergancy on 
-            span => " #{l(emergency.created_at, format: :short)}"
-            | , you can: 
+            = t('emergency.your_thing', time: l(emergency.created_at, format: :short)) 
             => link_to t('emergency.edit'), edit_emergency_path(emergency)
             = link_to t('emergency.del'), emergency_path(emergency), method: :delete, data:{confirm: 'Are you sure?'}
           -else
             span.glyphicon.glyphicon-time>
             span => "#{t('emergency.created')}  #{l(emergency.created_at, format: :short)}"
-            | by 
+            = t('emergency.by_author')
             = link_to (emergency.user.name), user_path(emergency.user.id)
 
           p
