@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :emergencies, only: [:destroy]
     resources :users do
       member do
         patch 'toggle_active'
