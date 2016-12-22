@@ -1,7 +1,7 @@
 = form_for [:admin, @user] do |f|
   ul.text-danger
     - @user.errors.full_messages.each do |m|
-      li=m
+      li = m
   .form-group
     = f.label :email
     = f.email_field :email, class: 'form-control'

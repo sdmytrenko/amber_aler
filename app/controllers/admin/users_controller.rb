@@ -10,7 +10,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
-    if @user.updete permitted_params
+    if @user.update permitted_params
       redirect_to [:admin, :users]
     else
       render 'edit'
