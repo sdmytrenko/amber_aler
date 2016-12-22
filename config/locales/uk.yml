@@ -1,12 +1,23 @@
 uk:
   emergencies:
     recent_emergencies: Недавні Події
+    list: Всі події
+    emergency: Подія
+    status: Статус
+    messages: Коментарі
+    last_answer: Останній комент
+    author: 'Автор: '
   emergency:
     author: 'автор %{name}'
     by_author: 'користувачем '
+    your_thing: 'Ви створили цю подію %{time}, ви можете: '
+    your_thing2: 'Ви створили цю подію %{time}'
     comments:
       many: '%{count} коментарі'
       one: '%{count} коментар'
+      two: '%{count} коментаря'
+      three: '%{count} коментаря'
+      four: '%{count} коментаря'
       other: '%{count} коментарів'
       zero: жодного коментаря
     edit: Редагувати
@@ -14,12 +25,29 @@ uk:
     more: Детальніше
     created: Створено
     updated: Останній раз обновлено
+  messages:
+    recent_messages: Останні коментарі
+  message:
+    leave_message: 'Залиште ваше повідомлення:'
+    message_closed: Автор заборонив можливість коментувати
   sidebar:
     navigation: Опції
     all_emergencies: Всі події
     new_emergency: Створити нову подію
     edit_emergency: Редагувати подію
     delete_emergency: Видалити подію
+    about_us: Про нас
+  user:
+    name: 'Ім’я: %{name} '
+    info: 'Інформація: %{info}'
+    sing_in: Вхід
+    sing_out: Вихід
+    profile: Ваш профіль
+    user_profile: Профіль користувача
+    profile_edit: Змінити профіль
+    my_emergencies: Мої події
+    my_messages: Мої коментарі
+
 
   date:
     abbr_day_names:
