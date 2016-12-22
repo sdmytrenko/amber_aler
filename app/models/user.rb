@@ -18,6 +18,8 @@
 #  name                   :string
 #  avatar                 :string
 #  last_seen              :datetime
+#  role                   :string           default("user")
+#  active                 :boolean          default(TRUE)
 #
 # Indexes
 #
@@ -26,6 +28,7 @@
 #
 
 class User < ApplicationRecord
+  ROLES = ['user', 'admin']
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -40,5 +43,11 @@ class User < ApplicationRecord
 
   def display_name
     name.presence || "User ##{id}"
+  end
+
+  ROLES.each do |role_name| # метод для перевірки ролі користувача
+    define_method "#{role_name}?" do
+      self.role == role_name
+    end
   end
 end
