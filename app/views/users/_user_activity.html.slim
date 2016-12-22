@@ -3,9 +3,9 @@ section
     p
     h3
       -if @user == current_user
-        | My emergencies
+        = t('user.my_emergencies')
       -else
-        | Recent emergencies
+        = t('emergencies.recent_emergencies')
 
     table.table.table-striped.table-hover
       thead.add-text-purple-color
@@ -26,26 +26,21 @@ section
         - @user.emergencies.each do |emergency|
           -i+=1
           tr
-            th
-              =i
-            th
-              = link_to emergency.title, emergency_path(emergency.id)
-            th
-              = emergency.created_at.to_formatted_s(:short)
+            th = i
+            th = link_to emergency.title, emergency_path(emergency)
+            th = emergency.created_at.to_formatted_s(:short)
             -if @user == current_user
-              th
-                = link_to "Edit", edit_emergency_path(emergency)
-              th
-                = link_to "Destroy", emergency_path(emergency), method: :delete, data:{confirm: 'Are you sure?'}
+              th = link_to "Edit", edit_emergency_path(emergency)
+              th = link_to "Destroy", emergency_path(emergency), method: :delete, data:{confirm: 'Are you sure?'}
 
 
   div.col-md-4
     p
     h3
       -if @user == current_user
-        | My messages
+        = t('user.my_messages')
       -else
-        | Recent messages
+        = t('messages.recent_messages')
     - @user.messages.each do |message|
       .panel.panel-default
         .panel-heading

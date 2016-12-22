@@ -46,6 +46,10 @@ class EmergenciesController < ApplicationController
     end
   end
 
+  def show_list
+    @emergencies = Emergency.all
+  end
+
   private
     def only_author!
       unless @emergency.user == current_user

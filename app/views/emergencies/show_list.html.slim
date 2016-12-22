@@ -1,0 +1,38 @@
+.container.custom-container
+  .row
+    .col-md-8
+      h1.add-text-purple-color
+        = t('emergencies.list')
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th
+              = t('emergencies.emergency')
+            th
+              = t('emergencies.status')
+            th 
+              = t('emergencies.messages')
+            th 
+              = t('emergencies.last_answer')
+
+        tbody
+          - @emergencies.each do |emergency|
+            tr
+              th 
+                = link_to emergency.title, emergency_path(emergency)
+                h6.small
+                  = t('emergencies.author')
+                  = link_to emergency.user.name, user_path(emergency.user.id)
+                  |  on 
+                  = l(emergency.created_at, format: :short)
+              th 
+                - if emergency.status == "closed"
+                  .label.label-danger
+                    | CLOSED
+                - else 
+                  .label.label-success
+                    | OPEN
+              th
+                = emergency.messages.size
+              th
+                = l(emergency.updated_at, format: :short)
