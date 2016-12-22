@@ -7,6 +7,12 @@
         - if emergency.status == 'closed'
           .label.label-danger
             | CLOSED
+
+        h3.small
+          -if user_signed_in? && current_user.admin?
+            | You are admin! You have the power to 
+            = link_to "Destroy!", admin_emergency_path(emergency), method: :delete, data:{confirm: 'Are you sure?'}
+
         h3
           = sanitize_wysiwyg emergency.description, shorten: 100
         p

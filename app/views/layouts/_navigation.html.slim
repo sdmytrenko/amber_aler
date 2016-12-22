@@ -14,7 +14,9 @@ nav.navbar.navbar-default
           = link_to t('sidebar.new_emergency'), new_emergency_path, class: 'navbar-brand'
         = link_to t('sidebar.all_emergencies') , emergencies_path, class: 'navbar-brand'
         = link_to 'Users', users_path, class: 'navbar-brand'
+        = link_to 'Manage users', admin_users_path, class: 'navbar-brand' if user_signed_in? && current_user.admin?
         = link_to t('sidebar.about_us'), "/pages/about.html.slim", class: 'navbar-brand'
+
       - if user_signed_in?
         ul.nav.navbar-nav.navbar-right
           li
