@@ -19,6 +19,7 @@
 #  avatar                 :string
 #  last_seen              :datetime
 #  role                   :string           default("user")
+#  active                 :boolean          default(TRUE)
 #
 # Indexes
 #
