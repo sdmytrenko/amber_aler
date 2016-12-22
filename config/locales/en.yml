@@ -1,6 +1,12 @@
 en:
   emergencies:
     recent_emergencies: Recent Emergencies
+    list: All emergencies
+    emergency: Emergency
+    status: Status
+    messages: Messages
+    last_answer: Last answer
+    author: 'Author: '
   emergency:
     author: 'by %{name}'
     by_author: 'by user '
@@ -18,6 +24,8 @@ en:
     more: Read More
     created: Posted on
     updated: Last updated on
+  messages:
+    recent_messages: Recent Messages
   message:
     leave_message: 'Leave a Message: '
     message_closed: Author closed the opportunity to comment
@@ -28,4 +36,13 @@ en:
     edit_emergency: Edit post
     delete_emergency: Delete post
     about_us: About Us
-
+  user:
+    name: 'Name: %{name} '
+    info: 'Info: %{info} '
+    sing_in: Sing in
+    sing_out: Sing out
+    profile: Your profile 
+    user_profile: User profile
+    profile_edit: Edit account
+    my_emergencies: My emergencies
+    my_messages: My messages

@@ -3,9 +3,9 @@ section
     p
     h3
       -if @user == current_user
-        | My emergencies
+        = t('user.my_emergencies')
       -else
-        | Recent emergencies
+        = t('emergencies.recent_emergencies')
 
     table.table.table-striped.table-hover
       thead.add-text-purple-color
@@ -38,9 +38,9 @@ section
     p
     h3
       -if @user == current_user
-        | My messages
+        = t('user.my_messages')
       -else
-        | Recent messages
+        = t('messages.recent_messages')
     - @user.messages.each do |message|
       .panel.panel-default
         .panel-heading

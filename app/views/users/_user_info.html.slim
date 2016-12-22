@@ -5,7 +5,7 @@ div.media
       = avatar_for(@user, size: 100)
   div.media-body
     h4.media-heading
-      | Name: #{@user.name if @user.name}
+      = t('user.name', name: @user.name)
       - if @user == current_user
         p
         | Email: #{@user.email if @user.email}

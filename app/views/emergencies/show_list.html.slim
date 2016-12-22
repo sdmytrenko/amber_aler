@@ -2,18 +2,18 @@
   .row
     .col-md-8
       h1.add-text-purple-color
-        |All emergencies
+        = t('emergencies.list')
       table.table.table-striped.table-hover
         thead
           tr
             th
-              | Emergency
+              = t('emergencies.emergency')
             th
-              | Status
+              = t('emergencies.status')
             th 
-              | Messages
+              = t('emergencies.messages')
             th 
-              | Last answer
+              = t('emergencies.last_answer')
 
         tbody
           - @emergencies.each do |emergency|
@@ -21,10 +21,10 @@
               th 
                 = link_to emergency.title, emergency_path(emergency)
                 h6.small
-                  | Author: 
+                  = t('emergencies.author')
                   = link_to emergency.user.name, user_path(emergency.user.id)
                   |  on 
-                  = emergency.created_at.to_formatted_s(:short)
+                  = l(emergency.created_at, format: :short)
               th 
                 - if emergency.status == "closed"
                   .label.label-danger
@@ -35,4 +35,4 @@
               th
                 = emergency.messages.size
               th
-                = emergency.updated_at.to_formatted_s(:short)
+                = l(emergency.updated_at, format: :short)
