@@ -6,7 +6,8 @@ module ApplicationHelper
     res
   end
 
-  def email_hexdigest_for(user)
-    Digest::MD5.hexdigest(user.email&.downcase)
-  end
+  # It was for identicon and now dont using
+  # def email_hexdigest_for(user)
+  #   Digest::MD5.hexdigest(user.email&.downcase)
+  # end
 end
