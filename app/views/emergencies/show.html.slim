@@ -23,7 +23,7 @@
 
       hr
       h4.custom-container
-        - if @emergency.allow_messages_for? current_user
+        - if @emergency.allow_messages_for?(current_user) && current_user.active
           = t('message.leave_message')
           p
           = render 'messages/form', emergency: @emergency
