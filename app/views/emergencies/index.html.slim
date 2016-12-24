@@ -42,8 +42,19 @@
       = paginate @emergencies
 
     section
-      div.col-md-4.add-custom-widh
-        div.well
-          h4 = t('sidebar.navigation')
-          = link_to t('sidebar.new_emergency'), new_emergency_path
+      .row
+        .col-md-4.add-custom-widh
+          .row
+            .col-md-12
+              = form_tag root_path, method: :get, enforce_utf8: false, class: 'form-inline' do
+                .form-group
+                  = text_field_tag 'q', '', placeholder: 'Search...', class: 'form-control'
+                  = submit_tag 'Search', name: nil, class: 'btn btn-default'
+          p
+          p
+          .row
+            .col-md-12
+              div.well
+                h4 = t('sidebar.navigation')
+                = link_to t('sidebar.new_emergency'), new_emergency_path
 
