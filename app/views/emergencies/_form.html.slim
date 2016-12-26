@@ -1,7 +1,8 @@
-= simple_form_for(@emergency) do |f|
+= simple_form_for(@emergency, html: {multipart: true}) do |f|
   = f.error_notification
 
   = f.input :title
+  = f.file_field :image
   = f.input :description, :input_html => {:style=> 'height: 200px'}
 
   = f.button :submit

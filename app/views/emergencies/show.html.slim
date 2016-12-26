@@ -14,6 +14,8 @@
           span => "#{t('emergency.created')}  #{l(@emergency.created_at, format: :short)}"
           = t('emergency.by_author')
           = link_to (@emergency.user.name), user_path(@emergency.user.id)
+
+      = image_tag @emergency.image.url(:large) if @emergency.image?
       br
       h4
         = sanitize_wysiwyg @emergency.description

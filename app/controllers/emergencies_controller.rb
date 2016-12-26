@@ -58,7 +58,7 @@ class EmergenciesController < ApplicationController
     end
 
     def page_params
-      params.require(:emergency).permit(:title, :description)
+      params.require(:emergency).permit(:title, :description, :image)
     end
 
     def find_emergency

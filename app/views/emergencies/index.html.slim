@@ -13,6 +13,9 @@
             | You are admin! You have the power to 
             = link_to "Destroy!", admin_emergency_path(emergency), method: :delete, data:{confirm: 'Are you sure?'}
 
+        .img-thumbmail.img-thumb
+          = image_tag emergency.image.url(:thumb) if emergency.image?
+
         h3
           = sanitize_wysiwyg emergency.description, shorten: 100
         p

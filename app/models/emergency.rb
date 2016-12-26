@@ -9,6 +9,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  status      :string           default("active")
+#  image       :string
 #
 
 class Emergency < ApplicationRecord
@@ -23,6 +24,8 @@ class Emergency < ApplicationRecord
   scope :archived, -> { where(status: ARCHIVED) }
 
   scope :not_archived, -> { where(status: STATUSES - [ARCHIVED]) }
+
+  mount_uploader :image, ImageUploader #uploader for image in emergency
 
   def allow_messages_for?(user)
     status == ACTIVE.to_s || user == self.user
