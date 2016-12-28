@@ -20,7 +20,7 @@ gem 'kaminari'
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0' # Add user avatar
 gem "mini_magick" # for carrierwave
 gem 'devise_lastseenable' # for symply add user.last_seen
-
+gem 'jquery-ui-rails' # add bootstrap-datepicker
 gem 'puma' # change WEBrick server
 
 group :development do

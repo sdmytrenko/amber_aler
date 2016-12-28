@@ -47,14 +47,42 @@
           .row
             .col-md-12
               = form_tag root_path, method: :get, enforce_utf8: false, class: 'form-inline' do
-                .form-group
-                  = text_field_tag 'q', '', placeholder: 'Search...', class: 'form-control'
-                  = submit_tag 'Search', name: nil, class: 'btn btn-default'
+                diw.well
+                  .form-group
+                    = text_field_tag 'q', '', placeholder: 'Search...', class: 'form-control'
+                    = submit_tag 'Search', name: nil, class: 'btn btn-default'
           p
-          p
+          br
           .row
             .col-md-12
               div.well
                 h4 = t('sidebar.navigation')
                 = link_to t('sidebar.new_emergency'), new_emergency_path
+
+          p
+          div.well
+            .row
+              .col-md-12
+                = form_tag root_path, method: :get, enforce_utf8: false do
+                  .form-group
+                    = text_field_tag 'start_date', '', placeholder: 'Date from...', class: 'form-control'
+                    span.input-group-addon to
+                    = text_field_tag 'end_date', '', placeholder: 'Date from...', class: 'form-control'
+                    = submit_tag 'Search', name: nil, class: 'btn btn-default'
+
+javascript:
+  $('#start_date').datepicker({
+    dateFormat: 'yy-mm-dd'
+    });
+  $('#end_date').datepicker({
+    dateFormat: 'yy-mm-dd'
+    }); 
+
+
+/
+/div.well
+  .input-group.input-daterange
+    input.form-control type="text" value="2012-04-05" 
+    span.input-group-addon to
+    input.form-control type="text" value="2012-04-19" 
 

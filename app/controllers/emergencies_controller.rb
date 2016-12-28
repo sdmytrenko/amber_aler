@@ -21,6 +21,9 @@ class EmergenciesController < ApplicationController
   def index
     @emergencies = Emergency.not_archived.order(updated_at: :desc)
     @emergencies = @emergencies.where('title LIKE ?', "%#{params[:q]}%") if params[:q].present?
+    @emergencies = @emergencies.where("created_at >= :start_date AND created_at <= :end_date", 
+                    {start_date: "#{params[:start_date]}", end_date: params[:end_date]}) if 
+                    (params[:start_date].present? && params[:end_date].present?)
     @emergencies = @emergencies.page(params[:page]).per(5)
   end
 
