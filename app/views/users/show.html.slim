@@ -2,13 +2,23 @@
   section
     div.col-md-8
       = render 'user_info'
-    div.col-md-4
-      div.well
-        p
-        = link_to t('user.profile_edit') , edit_user_registration_path
-        p
-        = link_to 'Test1'
-        p
-        = link_to 'Test2'
+    -if @user == current_user && @user.active
+      div.col-md-4
+        div.well
+          p
+          = link_to t('user.profile_edit') , edit_user_registration_path
+          p
+          = link_to 'Test1'
+          p
+          = link_to 'Test2'
 
-  = render 'user_activity'
+
+  -if @user == current_user && !current_user.active
+    p
+    .alert.alert-danger
+      button.close data-dismiss="alert"
+      strong Oh shit!
+      a.alert-link href="#"  YOU ARE BLOCKED! 
+      | contact administrator please.
+  -else
+    = render 'user_activity'

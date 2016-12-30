@@ -10,6 +10,9 @@ html
     == csrf_meta_tags
   body
     == render 'layouts/navigation'
+    - if user_signed_in? && !current_user.active
+      .alert.alert-danger
+        | Your account is blocked, please contact with Admin
     div.container.add-custom-main-background[role="main"]
       == render 'layouts/messages'
       == yield
