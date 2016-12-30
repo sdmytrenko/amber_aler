@@ -10,7 +10,10 @@ div.media
         p
         | Email: #{@user.email if @user.email}
       p
-      | Info:
+      | Role: #{@user.role}
+      p
+      - unless @user.active
+        |  Status: BLOCKED!
       p
       = online_status(@user)
 /      -if online(@user)/

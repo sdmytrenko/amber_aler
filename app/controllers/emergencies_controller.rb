@@ -19,7 +19,12 @@ class EmergenciesController < ApplicationController
   end
 
   def index
-    @emergencies = Emergency.not_archived.order(updated_at: :desc).page(params[:page]).per(5)
+    @emergencies = Emergency.not_archived.order(updated_at: :desc)
+    @emergencies = @emergencies.where('title LIKE ?', "%#{params[:q]}%") if params[:q].present?
+    @emergencies = @emergencies.where("created_at >= :start_date AND created_at <= :end_date", 
+                    {start_date: "#{params[:start_date]}", end_date: params[:end_date]}) if 
+                    (params[:start_date].present? && params[:end_date].present?)
+    @emergencies = @emergencies.page(params[:page]).per(5)
   end
 
   def edit
@@ -58,7 +63,7 @@ class EmergenciesController < ApplicationController
     end
 
     def page_params
-      params.require(:emergency).permit(:title, :description)
+      params.require(:emergency).permit(:title, :description, :image)
     end
 
     def find_emergency

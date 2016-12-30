@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
 
   before_action :find_message, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [ :create, :edit, :update]
 
   def create
     @message = Message.new(message_params)

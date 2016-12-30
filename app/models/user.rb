@@ -39,7 +39,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: {minimum: 5}
 
-  mount_uploader :avatar, AvatarUploader
+  mount_uploader :avatar, AvatarUploader #uploader for avatar
 
   def display_name
     name.presence || "User ##{id}"
